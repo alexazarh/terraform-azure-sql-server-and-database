@@ -35,6 +35,14 @@ resource "azurerm_sql_firewall_rule" "allow_azure_services" {
   end_ip_address      = "0.0.0.0"
 }
 
+resource "azurerm_sql_firewall_rule" "allow_additional_ip" {
+  name                = "AllowAdditionalIP"
+  resource_group_name = data.azurerm_resource_group.sandbox_rg.name
+  server_name         = azurerm_sql_server.default.name
+  start_ip_address    = var.ALLOW_IP_IN_FIREWALL
+  end_ip_address      = ALLOW_IP_IN_FIREWALL
+}
+
 resource "azurerm_sql_database" "default" {
   name                = var.DB_NAME
   resource_group_name = data.azurerm_resource_group.sandbox_rg.name
