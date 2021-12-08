@@ -1,5 +1,14 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=2.46.0"
+    }
+  }
+}
+
+# Configure the Microsoft Azure Provider
 provider "azurerm" {
-  version = "=2.20.0"
   features {}
 }
 
@@ -40,7 +49,7 @@ resource "azurerm_sql_firewall_rule" "allow_additional_ip" {
   resource_group_name = data.azurerm_resource_group.sandbox_rg.name
   server_name         = azurerm_sql_server.default.name
   start_ip_address    = var.ALLOW_IP_IN_FIREWALL
-  end_ip_address      = ALLOW_IP_IN_FIREWALL
+  end_ip_address      = var.ALLOW_IP_IN_FIREWALL
 }
 
 resource "azurerm_sql_database" "default" {
