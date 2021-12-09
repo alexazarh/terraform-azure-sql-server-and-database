@@ -56,8 +56,8 @@ resource "azurerm_sql_firewall_rule" "allow_additional_ip2" {
   name                = "AllowAdditionalIP2"
   resource_group_name = data.azurerm_resource_group.sandbox_rg.name
   server_name         = azurerm_sql_server.default.name
-  start_ip_address    = "10.10.10.10"
-  end_ip_address      = "10.10.10.10"
+  start_ip_address    = "10.10.10.20"
+  end_ip_address      = "10.10.10.20"
 }
 
 resource "azurerm_sql_database" "default" {
